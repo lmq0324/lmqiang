@@ -1,141 +1,76 @@
-var dom = document.getElementById('chart-panel');
-dom.style.width = 780 + 'px';
-dom.style.height = 600 + 'px';
-option = {
-    tooltip: {
-        show: true
-    },
-    legend: {
-        x: "center",
-        data: ["家人", "朋友"]
-    },
-    animation: false,
-    series: [{
-        categories: [{
-            name: '家人',
-            itemStyle: {
-                normal: {
-                    color: "#009800",
-                }
-            }
-        }, {
-            name: '朋友',
-            itemStyle: {
-                normal: {
-                    color: "#4592FF",
-                }
-            }
-        }],
-        type: 'graph',
-        layout: 'force',
-        symbol: "circle",
-        draggable: false,//拖拽属性
-        symbolSize: 50,
-        roam: true, //鼠标拖动滚轮缩放属性
-        edgeSymbol: ['circle', 'arrow'],
-        edgeSymbolSize: [0, 10],
-        // 连接线上的文字
-        focusNodeAdjacency: true, //划过只显示对应关系
-        edgeLabel: {
-            normal: {
-                show: true,
-                textStyle: {
-                    fontSize: 20
-                },
-                formatter: "{c}"
-            }
-        },
-        lineStyle: {
-            normal: {
-                opacity: 1,
-                width: 2,
-                curveness: 0
-            }
-        },
-        // 圆圈内的文字
-        label: {
-            normal: {
-                show: true
-            }
-        },
-        force: {
-            repulsion: 5000,
-            initLayout:'circular',
-            layoutAnimation:false
-            
-        },
-        data: [{
-            name: '节点1',
-            symbol: 'triangle',
-            itemStyle: {
-                normal: {
-                    color: '#f90', //圆点的颜色
-                    label: {
-                        position: 'bottom',
-                        textStyle: {
-                            color: '#f90'
-                        }
-                    }
-                }
-            },
-
-        }, {
-            name: '节点2',
-            category: 1,
-            itemStyle: {
-                normal: {
-                    color: '#090',
-                },
-                emphasis: {
-                    color: "#000"
-                }
-            }
-        }, {
-            name: '节点3',
-            category: 1,
-        }, {
-            name: '节点4',
-            category: 0,
-        }, {
-            name: '节点5',
-            category: 0,
-        }, {
-            name: '节点6',
-            category: 0,
-        }],
-        links: [{
-            source: '节点1',
-            target: '节点2',
-            value: "朋友",
-            lineStyle: {
-                normal: {
-                    color: '#38f',
-                    curveness: 0 // 线的弯曲度 0-1之间 越大则歪曲度更大
-                }
-            },
-            label: {
-                normal: {
-                    textStyle: {
-                        color: '#07ac72'
-                    }
-                }
-            }
-        }, {
-            source: '节点1',
-            target: '节点3',
-            value: "朋友"
-        }, {
-            source: '节点1',
-            target: '节点4',
-            value: "家人"
-        }, {
-            source: '节点1',
-            target: '节点5',
-            value: "家人"
-        }, {
-            source: '节点1',
-            target: '节点6',
-            value: "家人"
-        }, ]
-    }]
-};
+.checkbox label::before {
+content: "";
+display: inline-block;
+position: absolute;
+width: 20px;
+height: 20px;
+left: 0;
+margin-left: -20px;
+border: 1px solid #cccccc;<!--没选中时的边框颜色-->
+border-radius: 3px;
+background-color: #fff;<!--没选中时的颜色-->
+-webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+-o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+.checkbox label::after {
+display: inline-block;
+position: absolute;
+width: 16px;
+height: 16px;
+left: 0;
+top: 0;
+margin-left: -19px;<!--可以改变“√”的位置-->
+padding-left: 3px;<!--可以改变“√”的位置-->
+padding-top: 1px;<!--可以改变“√”的位置-->
+font-size: 13px;<!--选中后的中间打钩的字体大小（字体越大中间的勾越大越明显）-->
+color: #FAD500;<!--选中后的中间打钩的颜色-->
+}
+.checkbox input[type="checkbox"],
+.checkbox input[type="radio"] {
+opacity: 0;
+z-index: 1;
+}
+.checkbox input[type="checkbox"]:focus + label::before,
+.checkbox input[type="radio"]:focus + label::before {
+outline: thin dotted;
+outline: 5px auto -webkit-focus-ring-color;
+outline-offset: -2px;
+background-color: black;
+border-color: black;
+}
+.checkbox input[type="checkbox"]:checked + label::before,
+.checkbox input[type="radio"]:checked + label::before {
+background-color: black;<!--选中后的背景颜色-->
+border-color: black;<!--选中后的边框颜色-->
+}
+.checkbox input[type="checkbox"]:checked + label::after,
+.checkbox input[type="radio"]:checked + label::after {
+font-family: "FontAwesome";
+content: "\f00c";
+}
+.checkbox input[type="checkbox"]:disabled + label,
+.checkbox input[type="radio"]:disabled + label {
+opacity: 0.65;
+}
+.checkbox input[type="checkbox"]:disabled + label::before,
+.checkbox input[type="radio"]:disabled + label::before {
+background-color: #eeeeee;
+cursor: not-allowed;
+}
+.checkbox.checkbox-circle label::before {
+border-radius: 50%;
+<div>
+<div class="checkbox checkbox-circle">
+<input id="radio1" class="styled" type="radio" name="radio">
+<label for="radio1" class="font-bolder">
+radio1
+</label>
+</div>
+<div class="checkbox checkbox-circle">
+<input id="radio2" class="styled" type="radio" name="radio">
+<label for="radio2" class="font-bolder">
+raido2
+</label>
+</div>
+</div>
