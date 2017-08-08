@@ -1,4 +1,4 @@
-'''css
+```css
 .checkbox label::before {
 content: "";
 display: inline-block;
@@ -61,9 +61,9 @@ cursor: not-allowed;
 }
 .checkbox.checkbox-circle label::before {
 border-radius: 50%;
-'''
+```
 
-'''html
+```html
 <div>
 <div class="checkbox checkbox-circle">
 <input id="radio1" class="styled" type="radio" name="radio">
@@ -78,6 +78,5 @@ raido2
 </label>
 </div>
 </div>
-'''
-
+```
 http://blog.csdn.net/qq_28550739/article/details/53436080
