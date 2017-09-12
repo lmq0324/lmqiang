@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery UI sortable()实现拖动排序</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="./jquery-1.9.1.min.js"></script>
+        <script src="./jquery-ui.js"></script>
+    </head>
+    <body>
+       <script>
+        $(function() {
+          $( ".sortable" ).sortable({
+          cursor: "move",
+          items :"li",                        //只是li可以拖动
+          opacity: 0.6,                       //拖动时，透明度为0.6
+          revert: true,                       //释放时，增加动画
+          update : function(event, ui){       //更新排序之后
+              var pxid=$(this).sortable("toArray");
+              alert("顺序："+pxid);  //新的顺序
+             
+          }
+         });
+       });
+      </script>
+      <style>
+        .sortable li{text-align:center;float: left;width: 100px;height: 120px; border:1px solid red;margin-left: 10px;margin-top: 10px;position:relative;list-style:none}
+        .sortable li p{position:absolute;bottom:0px;padding:0px;margin:0px;text-align:center;width: 100px;max-height: 35px; overflow: hidden;}
+        .sortable li img{max-height: 85px;max-width: 100px;}
+      </style>
+      <ul class="sortable" >
+        <li class="ui-state-default" id="1"><img src="./alex.png"/><p>第1项</p></li>
+        <li class="ui-state-default" id="2"><img src="./alex.png"/><p>第2项</p></li>
+        <li class="ui-state-default" id="3"><img src="./alex.png"/><p>第3项</p></li>
+        <li class="ui-state-default" id="4"><img src="./alex.png"/><p>第4项</p></li>
+        <li class="ui-state-default" id="5"><img src="./alex.png"/><p>第5项</p></li>
+        <li class="ui-state-default" id="6"><img src="./alex.png"/><p>第6项</p></li>
+        <li class="ui-state-default" id="7"><img src="./alex.png"/><p>第7项</p></li>
+        <li class="ui-state-default" id="8"><img src="./alex.png"/><p>第8项</p></li>
+        <li class="ui-state-default" id="9"><img src="./alex.png"/><p>第9项</p></li>
+      </ul>
+      
+    </body>
+</html>
